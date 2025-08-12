@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slot PG Fofinho - Teste</title>
+<style>
+    body {
+        margin: 0;
+        background: linear-gradient(#ffb6f1, #ffd9f9);
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+    #slot {
+        display: grid;
+        grid-template-columns: repeat(5, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 5px;
+        background: #fff5fa;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .cell {
+        background: #ffe0f5;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        transition: transform 0.3s;
+    }
+    .cell.spin {
+        animation: spin 0.4s ease-in-out;
+    }
+    @keyframes spin {
+        0% { transform: rotateX(0deg); }
+        50% { transform: rotateX(180deg); }
+        100% { transform: rotateX(360deg); }
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        background: #ff6fcf;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    button:active {
+        background: #ff3fb5;
+    }
+    #msg {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #ff0088;
+    }
+</style>
+</head>
+<body>
+
+<h1>Slot PG Fofinho</h1>
+<div id="slot"></div>
+<button id="spin">🎰 Girar</button>
+<div id="msg"></div>
+
+<script>
+const slot = document.getElementById("slot");
+const msg = document.getElementById("msg");
+const symbols = ["🍭","🍬","🍩","🍓","🍪","🍒"];
+let balance = 1000;
+
+// Criar grade inicial
+function createGrid() {
+    slot.innerHTML = "";
+
+    for (let i = 0; i < 15; i++) {
